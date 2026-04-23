@@ -1,0 +1,155 @@
+/* Estilos de Poker Mombe — reglas con CSS plano (el CDN de Tailwind no aplica @apply en <style> normal) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    --casino-red: #991b1b;
+    --casino-gold: #fbbf24;
+    --casino-black: #0a0a0a;
+}
+
+body {
+    background-color: var(--casino-black);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+.casino-title {
+    font-family: 'Cinzel', serif;
+}
+
+.poker-table {
+    background: radial-gradient(circle, #b91c1c 0%, #450a0a 100%);
+    border: 12px solid #27272a;
+    box-shadow:
+        inset 0 0 80px rgba(0, 0, 0, 0.9),
+        0 0 0 2px var(--casino-gold),
+        0 20px 50px rgba(0, 0, 0, 0.8);
+    border-radius: 180px;
+    position: relative;
+}
+
+.card-visual {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Equivalente a utilidades usadas con @apply en el HTML original */
+.btn-casino {
+    flex: 1 1 0%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.75rem;
+    font-weight: 900;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    transition-property: all;
+    transition-duration: 150ms;
+    color: #fff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-casino:active {
+    transform: scale(0.95);
+}
+
+.btn-casino:disabled {
+    opacity: 0.2;
+    filter: grayscale(1);
+}
+
+.btn-fold {
+    background: linear-gradient(135deg, #ef4444 0%, #7f1d1d 100%);
+    border-bottom: 4px solid #450a0a;
+}
+
+.btn-call {
+    background: linear-gradient(135deg, #0ea5e9 0%, #1e3a8a 100%);
+    border-bottom: 4px solid #172554;
+}
+
+.btn-raise {
+    background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+    border-bottom: 4px solid #022c22;
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #f59e0b 0%, #78350f 100%);
+    border-bottom: 4px solid #451a03;
+}
+
+.winner-glow {
+    animation: gold-pulse 1s infinite;
+    border: 4px solid var(--casino-gold) !important;
+    z-index: 50;
+}
+
+@keyframes gold-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 10px var(--casino-gold);
+        transform: scale(1.05) translate(-50%, -50%);
+    }
+    50% {
+        box-shadow: 0 0 30px var(--casino-gold);
+        transform: scale(1.1) translate(-50%, -50%);
+    }
+}
+
+.card-back {
+    background: #7f1d1d;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(251, 191, 36, 0.1) 5px, rgba(251, 191, 36, 0.1) 10px);
+    border: 2px solid #f8fafc;
+}
+
+.blind-badge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.chat-bubble {
+    position: absolute;
+    background: #fff;
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 100;
+    animation: chat-bounce 1s ease-in-out infinite;
+}
+
+@keyframes chat-bounce {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-0.15em);
+    }
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #fbbf24;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
