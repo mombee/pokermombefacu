@@ -153,3 +153,106 @@ input[type='range']::-webkit-slider-thumb {
     cursor: pointer;
     box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
 }
+
+/* --- AJUSTES RESPONSIVE --- */
+
+/* Para pantallas pequeñas (Celulares) */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Permitir scroll si el contenido es muy alto */
+    }
+
+    .poker-table {
+        border-width: 6px; /* Borde más fino */
+        border-radius: 40px; /* Menos redondeado en móvil para ganar espacio */
+        margin-top: -20px;
+    }
+
+    /* Ajustar los textos del header */
+    header .text-3xl {
+        font-size: 1.25rem;
+    }
+
+    /* Ajustar el footer para que no ocupe toda la pantalla */
+    footer {
+        padding: 0.5rem;
+    }
+
+    footer .max-w-7xl {
+        gap: 0.5rem;
+    }
+
+    /* Hacer las cartas más pequeñas en el footer */
+    #my-hand-cards img, 
+    .card-visual {
+        width: 35px; 
+        height: auto;
+    }
+
+    #my-hand-name {
+        font-size: 0.875rem;
+        width: auto;
+    }
+
+    /* Controles de apuesta más compactos */
+    #betting-ui {
+        padding: 0.5rem;
+        width: 100% ;
+    }
+}
+
+/* Ajuste específico para la escala de la mesa en pantallas muy chicas */
+@media (max-width: 480px) {
+    .poker-table {
+        transform: scale(1); /* Evitamos que se pierda fuera de foco */
+        aspect-ratio: 1/1; /* Mesa más cuadrada en móviles verticales */
+        border-radius: 20px;
+    }
+    
+    #action-log {
+        min-width: 180px;
+        font-size: 8px;
+    }
+}
+
+/* --- AJUSTE DEFINITIVO PARA MÓVIL --- */
+
+@media (max-width: 768px) {
+    /* 1. Achicamos mucho los cuadros de los jugadores */
+    #players-layer > div {
+        padding: 4px 6px !important;
+        min-width: 60px !important; /* Más angostos */
+        max-width: 80px !important;
+        transform: scale(0.8); /* Los encogemos un 20% extra */
+    }
+
+    /* 2. Nombre y Fichas super compactos */
+    #players-layer div span, 
+    #players-layer div p {
+        font-size: 9px !important;
+        margin: 0 !important;
+    }
+
+    /* 3. EL LOG DE MENSAJES (El texto "A se unió...") */
+    /* Lo bajamos para que salga de abajo de los jugadores */
+    #action-log {
+        position: relative;
+        top: 60px; /* Lo empujamos 60px hacia abajo */
+        font-size: 8px !important;
+        padding: 2px 10px !important;
+        min-width: 150px !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* 4. CARTAS DE LA COMUNIDAD */
+    /* Las subimos un poquito para que el log no las tape si hay muchas */
+    #community-cards {
+        transform: translateY(-20px) scale(0.85);
+    }
+
+    /* 5. MESA */
+    /* Le damos más aire arriba para que el header no la aplaste */
+    #table-container {
+        margin-top: 40px !important;
+    }
+}
